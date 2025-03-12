@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if user_id == "1" %}Pebbles{% else %}Smarti{% endif %} - Essensauswahl</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .option {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>{% if user_id == "1" %}Pebbles {% else %}Smarti{% endif %}</h1>
+    <p>Wähle deine Essensoptionen (mehrere Auswahlen möglich):</p>
+    
+    <form action="{{ url_for('index') }}" method="post">
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        
+        <div class="options">
+            {% for option in food_options %}
+            <label class="option">
+                <input type="checkbox" name="food" value="{{ option }}" {% if option in current_choices %}checked{% endif %}>
+                {{ option }}
+            </label>
+            {% endfor %}
+        </div>
+        
+        <button type="submit" class="submit-btn">Bestätigen</button>
+    </form>
+    
+    <a href="{{ url_for('index') }}" class="back-link">Zurück zur Hauptseite</a>
+</body>
+</html>
