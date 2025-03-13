@@ -11,7 +11,7 @@ def filter_intersection(list1, list2):
     return set(list1).intersection(set(list2))
 
 # Liste der Essensoptionen
-food_options = ["Pizza", "Sushi", "Burger", "Pasta", "Reis", "Indisch", "Thai", "Gebratene Nudeln", "Salat", "Curry", "Kebab"]
+food_options = ["Pizza", "Sushi", "Burger", "Pasta", "Eierreis", "Indisch", "Thai", "Gebratene Nudeln", "Salat", "Suppe", "Kebab", "Bosna", "Keines", "Ganz egal, also wirklich"]
 
 # Datenbank initialisieren
 def init_db():
